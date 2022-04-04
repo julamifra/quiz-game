@@ -10,4 +10,84 @@ body {
     letter-spacing: 1px;
     line-height: 1.5;
     color: #3a3a3a;
+
 }
+
+header {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2%;
+}
+
+.initial-logo {
+    height: 4rem;
+    padding-right: 5px;
+}
+
+.game-area {
+    height: 70vh;
+    margin: 0 auto;
+    width: 75%;
+    padding: 1%
+}
+
+/* Questions Section */
+
+.questions-section {
+    width: 85%;
+    height: 150px;
+    margin: 30px auto;
+    padding: 10px 0;
+}
+.username-logo{
+    float: left;
+    width: calc(20% - 5px);
+    height: 125px;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+.exclamation-mark {
+    height: 4.5rem;
+    display: block;
+    margin: 0 auto;
+}
+#username {
+    background-color: #2d4b5a;
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 25px;
+    color: white;
+}
+
+.question-box {
+    background-color: #ffb253;
+    float: right;
+    width: 75%;
+    box-sizing: border-box;
+    height: 125px;
+    line-height: 125px;
+    border-radius: 25px;
+    text-align: center;
+    padding: 3px;
+}
+
+.question-box span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 18px;
+}
+
+.rhomb{
+    background-color: #ffb253;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    bottom: 13px;
+    left: 80px;
+    transform: rotate(45deg);
+} 
+
+/* Answer Section */
+
+
