@@ -27,14 +27,14 @@ header {
 .game-area {
     height: 70vh;
     margin: 0 auto;
-    width: 75%;
+    width: 65%;
     padding: 1%
 }
 
 /* Questions Section */
 
 .questions-section {
-    width: 85%;
+    width: 100%;
     height: 150px;
     margin: 30px auto;
     padding: 10px 0;
@@ -75,7 +75,7 @@ header {
 .question-box span {
   display: inline-block;
   vertical-align: middle;
-  line-height: 18px;
+  line-height: 25px;
 }
 
 .rhomb{
@@ -86,8 +86,99 @@ header {
     bottom: 13px;
     left: 80px;
     transform: rotate(45deg);
+    z-index: -1;
 } 
 
-/* Answer Section */
+
+
+/* Username Section - index.html */
+
+.username-section {
+    /* background-color: aqua; */
+    width: 85%;
+    height: 150px;
+    margin: 30px auto;
+    padding: 10px 0;
+}
+
+.username-section > input {
+    width: 40%;
+    height: 40px;
+    margin: 5%;
+    padding: 5px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    float: left;
+    font-size: 2rem;
+}
+.button-submit {
+    width: 20%;
+    height: 54px;
+    margin: 5%;
+    padding: 5px;
+    border: 2px solid #3d8af7;
+    color: #3d8af7;
+    border-radius: 10px;
+    font-size: 2rem;
+    float: right;
+}
+
+.button-submit:active,
+.button-submit:hover {
+    background-color: #3d8af7;
+    color: white;
+}
+.button-submit:disabled {
+    border: 2px solid #87888a;
+    background-color: #c0c0c0;
+    color: white;
+}
+
+/* Answer Section - game.html */
+
+#round-counter {
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 50px;
+    padding: 15px 10px;
+    position: relative;
+    line-height: 0;
+    bottom: 237px;
+    left: 44%;
+}
+
+.answers-section {
+    width: 100%;
+    text-align: center;
+}
+.answer-box {
+    display: inline-block;
+    width: 45%;
+    height: 150px;
+    line-height: 150px;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    margin-top: 2px;
+    position: relative;
+    font-size: 2.5rem;
+}
+
+
+
+#answer1 {
+    background-color: #cbe8ba;
+}
+#answer2 {
+    background-color: #fefac0;
+}
+#answer3 {
+    background-color: #a8c6fa;
+}
+#answer4 {
+    background-color: #f6a2bf;
+}
+
+
+/* Score Section - game.html */
 
 
