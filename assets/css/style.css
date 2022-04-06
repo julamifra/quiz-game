@@ -94,29 +94,36 @@ header {
 /* Username Section - index.html */
 
 .username-section {
-    /* background-color: aqua; */
-    width: 85%;
     height: 150px;
     margin: 30px auto;
     padding: 10px 0;
 }
 
-.username-section > input {
+#input-username-error {
+    float: right;
     width: 40%;
-    height: 40px;
-    margin: 5%;
-    padding: 5px;
+    margin-right: 15%;
+}
+#input-username {
+    width: 100%;
+    height: 50px;
     border: 2px solid #000;
     border-radius: 10px;
-    float: left;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    padding-left: 10px;
 }
-.username-section > button{
-    width: 20%;
-    height: 54px;
-    margin: 5%;
-    padding: 5px;
+#error {
+    color: red;
+    margin: 3px;
+    visibility: hidden;
+}
+
+#good-luck-message {
+    display: none;
     float: right;
+    width: 40%;
+    margin-right: 8%;
+    font-size: 2rem;
 }
 
 /* Button styles */
@@ -125,6 +132,14 @@ header {
     border: 2px solid #3d8af7;
     color: #3d8af7;
     border-radius: 10px;
+}
+#submit-indexhtml{
+    width: 20%;
+    height: 54px;
+    float: right;
+    font-size: 150%;
+}
+#submit-answer{
     font-size: 200%;
 }
 
@@ -132,11 +147,13 @@ header {
 .button-submit:hover {
     background-color: #3d8af7;
     color: white;
+    cursor: pointer;
 }
 .button-submit:disabled {
     border: 2px solid #87888a;
     background-color: #c0c0c0;
     color: white;
+    cursor: not-allowed;
 }
 
 /* Answer Section - game.html */

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Quiz Game general knowledge">
     <meta name="keywords" content="quiz, game, questions, answers, score">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>Quiz</title>
@@ -31,10 +31,15 @@
             </div>
         </section>
         <section class="username-section">
-            <input type="text" placeholder="Username...">
-            <button class="button-submit" disabled>SUBMIT</button>
+            <button id="submit-indexhtml" class="button-submit" disabled>SUBMIT</button>
+            <div id="input-username-error" >
+                <input id="input-username" maxlength="10" type="text" placeholder="Username...">
+                <p id="error"><i class="fas fa-exclamation-circle"></i> Only alphanumeric characters are allowed (a-z and 0-9). </p>
+            </div>
+            <p id="good-luck-message"><strong>Good luck!</strong></p>
         </section>
     </div>   
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
 
