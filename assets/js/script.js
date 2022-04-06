@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         })
     
         submitButtonUsername.addEventListener('click', function(e){
-            if(thisusername !== '...') {
+            if(username !== '...') {
                 redirectPage('game.html');
                 startGame();
             } else {
