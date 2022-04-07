@@ -5,8 +5,7 @@ let idsQuestionDisplayed = [];
 
 
 document.addEventListener("DOMContentLoaded", function(e){
-    console.log("Inside")
-    if(window.location.pathname === '/'){
+    if(window.location.pathname === '/' || window.location.pathname === '/index.html'){
         let inputUsername = document.getElementById('input-username');
         let submitButtonUsername = document.getElementById('submit-indexhtml');
     
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 /**
- * 
+ * Display the elements and set the text for the 'Start' view 
  */
 function setParamsStartGame(){
     const newMessage = `Hello <strong>${username}!</strong> The quiz is about to start.
@@ -64,7 +63,7 @@ function setParamsStartGame(){
 
 
 /**
- * 
+ * Redirect to the location given by parameter
  */
 function redirectPage(path) {
     window.location.href = window.location.origin + `/${path}`;
@@ -74,7 +73,7 @@ function redirectPage(path) {
 
 
 /**
- * 
+ * Get a new question to display and call to the displayQuestion function
  */
 function getQuestion(){
 
@@ -93,7 +92,7 @@ function getQuestion(){
 
 
 /**
- * 
+ * Display the question and answers given by the function parameter 
  */
 function displayQuestion(question_id){
     const questionElement = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
@@ -114,6 +113,12 @@ function displayQuestion(question_id){
 
 }
 
+/**
+ * Function called by the submit answer button, verify the correct answer and call the function
+ *  to increment correct/incorrect score.
+ * Call getQuestion function.
+ * Call the function to show the final message score, if 15 questions have been shown
+ */
 function submitAnswer(){
     const answerSelected = document.getElementsByClassName('answer-box-active')[0].innerHTML;
     const indexPlaying = idsQuestionDisplayed[idsQuestionDisplayed.length-1];
@@ -124,28 +129,58 @@ function submitAnswer(){
     } else {
         incrementIncorrectScore();
     }
-    console.log("idsQuestionDisplayed: ", idsQuestionDisplayed);
+
     if(idsQuestionDisplayed.length === 15){
-        console.log("FINISHH");
+        showFinalMessage();
     } else {
         getQuestion();
         incrementRoundCounter();
     }
 }
 
+/**
+ * Gets the current tally of correct answers from the DOM and increments it by 1
+ */
 function incrementCorrectScore() {
     let oldScore = parseInt(document.getElementById("correct-score").innerText);
     document.getElementById("correct-score").innerText = ++oldScore;
 }
 
+/**
+ * Gets the current tally of incorrect answers from the DOM and increments it by 1
+ */
 function incrementIncorrectScore() {
     let oldScore = parseInt(document.getElementById("incorrect-score").innerText);
     document.getElementById("incorrect-score").innerText = ++oldScore;
 }
 
+
+/**
+ * Gets the current tally of round counter from the DOM and increments it by 1
+ */
 function incrementRoundCounter(){
     const elem = document.getElementById('round-counter');
     let oldRound = parseInt(elem.innerText.split('/')[0]);
     const newRound = `${++oldRound}/15`;
     document.getElementById('round-counter').innerText = newRound;
+}
+
+
+/**
+ * Dispaly a pop-up with the final score and two buttons.
+ * All the elements are set to green
+ */
+function showFinalMessage(){
+    document.getElementById('final-message').style.visibility = 'visible';
+
+    document.getElementById("final-message-score").innerText = document.getElementById("correct-score").innerText;
+    const answerElements = document.getElementsByClassName('answer-box');
+    for(let element of answerElements){
+        element.style.backgroundColor = 'grey';
+        element.style.border = 'none';
+    };
+    document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
+    document.getElementById("incorrect-score").style.color = 'grey';
+    document.getElementById("correct-score").style.color = 'grey';
+    document.getElementById('submit-answer').disabled = true;
 }

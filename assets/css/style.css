@@ -196,6 +196,7 @@ header {
 
 
 
+
 #answer1 {
     background-color: #cbe8ba;
 }
@@ -246,3 +247,30 @@ header {
     font-weight: bold;
 }
 
+/* Final message- game.html */
+
+#final-message {
+    visibility: hidden;
+    height: 50%;
+    width: 50%;
+    text-align: center;
+    border: 4px solid rgb(62, 62, 122);
+    border-radius: 25px;
+    z-index: +1;
+    background-color: rgba(123, 143, 206, 0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+}
+
+#final-message > p {
+    padding-top: 50px;
+}
+#final-message > button {
+    font-size: 2rem;
+    padding: 5px;
+    margin-top: 50px;
+}
