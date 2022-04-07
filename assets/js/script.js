@@ -67,7 +67,8 @@ function setParamsStartGame(){
  * Redirect to the location given by parameter
  */
 function redirectPage(path) {
-    window.location.href = window.location.origin + `/${path}`;
+    const url = `${window.location.origin}/${window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1)}${path}`
+    window.location.href = url;
 }
 
 
