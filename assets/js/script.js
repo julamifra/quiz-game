@@ -5,7 +5,8 @@ let idsQuestionDisplayed = [];
 
 
 document.addEventListener("DOMContentLoaded", function(e){
-    if(window.location.pathname === '/' || window.location.pathname === '/index.html'){
+    const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1]
+    if( path === '' || path === 'index.html'){
         let inputUsername = document.getElementById('input-username');
         let submitButtonUsername = document.getElementById('submit-indexhtml');
     
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 }
             }
         })
-    } else if(window.location.pathname === '/game.html'){
+    } else if(path === 'game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
         for(let answerBox of answersBox){
             answerBox.addEventListener('click', function(e){
