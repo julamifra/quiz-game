@@ -67,7 +67,9 @@ function setParamsStartGame(){
  * Redirect to the location given by parameter
  */
 function redirectPage(path) {
-    const url = `${window.location.origin}/${window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1)}${path}`
+    const new_path = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') 
+                    + `/${path}`
+    const url = `${window.location.origin}${new_path}`
     window.location.href = url;
 }
 
@@ -131,7 +133,7 @@ function submitAnswer(){
         incrementIncorrectScore();
     }
 
-    if(idsQuestionDisplayed.length === 15){
+    if(idsQuestionDisplayed.length >= 15){
         showFinalMessage();
     } else {
         getQuestion();
