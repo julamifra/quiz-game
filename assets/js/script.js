@@ -1,10 +1,11 @@
 
 let username = document.getElementById('username').innerHTML || '...';
 let idsQuestionDisplayed = [];
-
+// variable 'data_questions' is declared in the other script
 
 
 document.addEventListener("DOMContentLoaded", function(e){
+    console.log("Inside")
     if(window.location.pathname === '/'){
         let inputUsername = document.getElementById('input-username');
         let submitButtonUsername = document.getElementById('submit-indexhtml');
@@ -16,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         submitButtonUsername.addEventListener('click', function(e){
             if(username !== '...') {
                 redirectPage('game.html');
-                startGame();
             } else {
                 let usernameInput = inputUsername.value;
                 const pattern = /^[a-zA-Z0-9]+$/;
@@ -35,8 +35,14 @@ document.addEventListener("DOMContentLoaded", function(e){
     } else if(window.location.pathname === '/game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
         for(let answerBox of answersBox){
-            answerBox.addEventListener('click', function(){
-                console.log('click: ', answerBox.id)
+            answerBox.addEventListener('click', function(e){
+                for(let element of answersBox){
+                    if(element.id !== answerBox.id){
+                        element.classList.remove('answer-box-active')
+                    }
+                };
+                e.target.classList.add('answer-box-active');
+                document.getElementById('submit-answer').disabled = false;
             })
         }
         getQuestion();
@@ -79,7 +85,7 @@ function getQuestion(){
             getQuestion()
         } else {
             flagAskQuestion = false;
-            idsQuestionDisplayed.push(random_num)
+            idsQuestionDisplayed.push(random_num);
             displayQuestion(random_num);
         }
     }
@@ -91,7 +97,12 @@ function getQuestion(){
  */
 function displayQuestion(question_id){
     const questionElement = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
-    const answerElements = document.getElementsByClassName('answer-box')
+    const answerElements = document.getElementsByClassName('answer-box');
+    
+    for(let element of answerElements){
+        element.classList.remove('answer-box-active');
+    };
+    document.getElementById('submit-answer').disabled = true;
 
     const questionObject = data_questions[question_id];
 
@@ -101,4 +112,40 @@ function displayQuestion(question_id){
     answerElements[2].innerHTML = questionObject.C;
     answerElements[3].innerHTML = questionObject.D;
 
+}
+
+function submitAnswer(){
+    const answerSelected = document.getElementsByClassName('answer-box-active')[0].innerHTML;
+    const indexPlaying = idsQuestionDisplayed[idsQuestionDisplayed.length-1];
+    const questionObj = data_questions[indexPlaying];
+    const isCorrect = questionObj[questionObj.answer] === answerSelected;
+    if(isCorrect){
+        incrementCorrectScore();
+    } else {
+        incrementIncorrectScore();
+    }
+    console.log("idsQuestionDisplayed: ", idsQuestionDisplayed);
+    if(idsQuestionDisplayed.length === 15){
+        console.log("FINISHH");
+    } else {
+        getQuestion();
+        incrementRoundCounter();
+    }
+}
+
+function incrementCorrectScore() {
+    let oldScore = parseInt(document.getElementById("correct-score").innerText);
+    document.getElementById("correct-score").innerText = ++oldScore;
+}
+
+function incrementIncorrectScore() {
+    let oldScore = parseInt(document.getElementById("incorrect-score").innerText);
+    document.getElementById("incorrect-score").innerText = ++oldScore;
+}
+
+function incrementRoundCounter(){
+    const elem = document.getElementById('round-counter');
+    let oldRound = parseInt(elem.innerText.split('/')[0]);
+    const newRound = `${++oldRound}/15`;
+    document.getElementById('round-counter').innerText = newRound;
 }
