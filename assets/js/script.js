@@ -73,7 +73,6 @@ function redirectPage(path) {
 
 
 
-
 /**
  * Get a new question to display and call to the displayQuestion function
  */
