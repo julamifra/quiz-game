@@ -69,7 +69,7 @@ function setParamsStartGame(){
 function redirectPage(path) {
     const new_path = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') 
                     + `/${path}`
-    const url = `${window.location.origin}${new_path}`
+    const url = `${window.location.origin}/${new_path}`
     window.location.href = url;
 }
 
