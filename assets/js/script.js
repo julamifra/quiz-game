@@ -1,7 +1,7 @@
 
 let username = document.getElementById('username').innerHTML || '...';
 let idsQuestionDisplayed = [];
-// variable 'data_questions' is declared in the other script
+// variable 'DATA_QUESTIONS' is declared in the other script
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -34,17 +34,17 @@ document.addEventListener("DOMContentLoaded", function(e){
         })
     } else if(path === 'game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
-        for(let answerBox of answersBox){
+        answersBox.forEach(answerBox => {
             answerBox.addEventListener('click', function(e){
-                for(let element of answersBox){
+                answersBox.forEach(element => {
                     if(element.id !== answerBox.id){
                         element.classList.remove('answer-box-active')
                     }
-                };
+                })
                 e.target.classList.add('answer-box-active');
                 document.getElementById('submit-answer').disabled = false;
             })
-        }
+        })
         getQuestion();
     }
 });
@@ -67,9 +67,9 @@ function setParamsStartGame(){
  * Redirect to the location given by parameter
  */
 function redirectPage(path) {
-    const new_path = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') 
+    let newPath = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') 
                     + `/${path}`
-    const url = `${window.location.origin}/${new_path}`
+    const url = `${window.location.origin}/${newPath}`
     window.location.href = url;
 }
 
@@ -82,13 +82,13 @@ function getQuestion(){
 
     let flagAskQuestion = true;
     while(flagAskQuestion) {
-        const random_num = Math.floor(Math.random() * data_questions.length) + 1;
-        if(idsQuestionDisplayed.includes(random_num)) {
+        let randomNum = Math.floor(Math.random() * DATA_QUESTIONS.length) + 1;
+        if(idsQuestionDisplayed.includes(randomNum)) {
             getQuestion()
         } else {
             flagAskQuestion = false;
-            idsQuestionDisplayed.push(random_num);
-            displayQuestion(random_num);
+            idsQuestionDisplayed.push(randomNum);
+            displayQuestion(randomNum);
         }
     }
 }
@@ -97,16 +97,16 @@ function getQuestion(){
 /**
  * Display the question and answers given by the function parameter 
  */
-function displayQuestion(question_id){
+function displayQuestion(questionID){
     const questionElement = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
     const answerElements = document.getElementsByClassName('answer-box');
     
-    for(let element of answerElements){
+    answerElements.forEach(element => {
         element.classList.remove('answer-box-active');
-    };
+    });
     document.getElementById('submit-answer').disabled = true;
 
-    const questionObject = data_questions[question_id];
+    const questionObject = DATA_QUESTIONS[questionID];
 
     questionElement.innerHTML = questionObject.question;
     answerElements[0].innerHTML = questionObject.A;
@@ -125,7 +125,7 @@ function displayQuestion(question_id){
 function submitAnswer(){
     const answerSelected = document.getElementsByClassName('answer-box-active')[0].innerHTML;
     const indexPlaying = idsQuestionDisplayed[idsQuestionDisplayed.length-1];
-    const questionObj = data_questions[indexPlaying];
+    const questionObj = DATA_QUESTIONS[indexPlaying];
     const isCorrect = questionObj[questionObj.answer] === answerSelected;
     if(isCorrect){
         incrementCorrectScore();
@@ -178,10 +178,10 @@ function showFinalMessage(){
 
     document.getElementById("final-message-score").innerText = document.getElementById("correct-score").innerText;
     const answerElements = document.getElementsByClassName('answer-box');
-    for(let element of answerElements){
+    answerElements.forEach(element => {
         element.style.backgroundColor = 'grey';
         element.style.border = 'none';
-    };
+    });
     document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
     document.getElementById("incorrect-score").style.color = 'grey';
     document.getElementById("correct-score").style.color = 'grey';

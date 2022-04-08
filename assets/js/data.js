@@ -1,4 +1,4 @@
-const data_questions = [{
+const DATA_QUESTIONS = [{
     "question": "A flashing red traffic light signifies that a driver should do what?",
     "A": "stop",
     "B": "speed up",
