@@ -3,59 +3,80 @@ let username = document.getElementById('username').innerHTML || '...';
 let idsQuestionDisplayed = [];
 // variable 'DATA_QUESTIONS' is declared in the other script
 
+window.addEventListener('resize', function(event){
+    changeContentMessage();
+    getUsernameResponsive()
+});
 
 document.addEventListener("DOMContentLoaded", function(e){
-    const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1]
+    getUsernameResponsive();
+    const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     if( path === '' || path === 'index.html'){
-        let inputUsername = document.getElementById('input-username');
+        changeContentMessage();
+        
         let submitButtonUsername = document.getElementById('submit-indexhtml');
-    
+        let inputUsername = document.getElementById('input-username');
+        
         inputUsername.addEventListener('input', function(e){
+            if(!inputUsername.value) {
+                document.getElementById("error").style.visibility = 'hidden';
+            }
             submitButtonUsername.disabled = inputUsername.value ? false : true; 
         })
-    
-        submitButtonUsername.addEventListener('click', function(e){
-            if(username !== '...') {
-                redirectPage('game.html');
-            } else {
-                let usernameInput = inputUsername.value;
-                const pattern = /^[a-zA-Z0-9]+$/;
-                const errorMessage = document.getElementById("error");
-                if(!pattern.test(usernameInput)){
-                    errorMessage.style.visibility = 'visible';
-                } else {
-                    errorMessage.style.visibility = 'hidden';
-                    username = document.getElementById('username').innerHTML = usernameInput;
-                    document.getElementById('input-username').value = '';
-    
-                    setParamsStartGame();
-                }
-            }
-        })
+        submitButtonUsername.addEventListener('click', clickSubmit)
+
     } else if(path === 'game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
-        answersBox.forEach(answerBox => {
+        for(let answerBox of answersBox){
             answerBox.addEventListener('click', function(e){
-                answersBox.forEach(element => {
+                for(let element of answersBox){
                     if(element.id !== answerBox.id){
                         element.classList.remove('answer-box-active')
                     }
-                })
+                };
                 e.target.classList.add('answer-box-active');
                 document.getElementById('submit-answer').disabled = false;
             })
-        })
+        };
         getQuestion();
     }
 });
+
+/**
+ * Verify the input value and shows an error message if necessary
+ */
+function clickSubmit(){
+    let inputUsername = document.getElementById('input-username');
+
+    if(username !== '...') {
+        redirectPage('game.html');
+    } else {
+        let usernameInput = inputUsername.value;
+        const pattern = /^[a-zA-Z0-9]+$/;
+        const errorMessage = document.getElementById("error");
+        if(!pattern.test(usernameInput)){
+            errorMessage.style.visibility = 'visible';
+        } else {
+            errorMessage.style.visibility = 'hidden';
+            username = document.getElementById('username').innerHTML = usernameInput;
+            document.getElementById('input-username').value = '';
+            getUsernameResponsive();
+            setParamsStartGame();
+        }
+    }
+}
 
 
 /**
  * Display the elements and set the text for the 'Start' view 
  */
 function setParamsStartGame(){
-    const newMessage = `Hello <strong>${username}!</strong> The quiz is about to start.
-                        15 questions will be shown. Guess as many as you can.`
+
+    let newMessage =  window.innerWidth < 600 
+                    ? `Hello <strong>${username}!</strong> The quiz is about to start..`
+                    : `Hello <strong>${username}!</strong> The quiz is about to start.
+                    15 questions will be shown. Guess as many as you can.`
+
     document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0].innerHTML = newMessage
     document.getElementById('submit-indexhtml').innerHTML = "Start";
     document.getElementById('input-username-error').style.display = 'none';
@@ -101,9 +122,9 @@ function displayQuestion(questionID){
     const questionElement = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
     const answerElements = document.getElementsByClassName('answer-box');
     
-    answerElements.forEach(element => {
+    for(let element of answerElements){
         element.classList.remove('answer-box-active');
-    });
+    };
     document.getElementById('submit-answer').disabled = true;
 
     const questionObject = DATA_QUESTIONS[questionID];
@@ -129,8 +150,10 @@ function submitAnswer(){
     const isCorrect = questionObj[questionObj.answer] === answerSelected;
     if(isCorrect){
         incrementCorrectScore();
+        showCorrectIcon();
     } else {
         incrementIncorrectScore();
+        showInCorrectIcon();
     }
 
     if(idsQuestionDisplayed.length >= 15){
@@ -168,6 +191,28 @@ function incrementRoundCounter(){
     document.getElementById('round-counter').innerText = newRound;
 }
 
+/**
+ * Display a check icon when the answer is correct
+ */
+function showCorrectIcon(){
+    document.getElementsByClassName('fa-times')[0].style.display = 'none';
+    document.getElementsByClassName('fa-check')[0].style.display = 'inline-block';
+    setTimeout( function(){
+        document.getElementsByClassName('fa-check')[0].style.display = 'none';
+    }, 1000)
+}
+
+/**
+ * Display a cross icon when the answer is correct
+ */
+function showInCorrectIcon(){
+    document.getElementsByClassName('fa-check')[0].style.display = 'none';
+    document.getElementsByClassName('fa-times')[0].style.display = 'inline-block';
+    setTimeout( function(){
+        document.getElementsByClassName('fa-times')[0].style.display = 'none';
+    }, 1000)
+}
+
 
 /**
  * Dispaly a pop-up with the final score and two buttons.
@@ -178,12 +223,37 @@ function showFinalMessage(){
 
     document.getElementById("final-message-score").innerText = document.getElementById("correct-score").innerText;
     const answerElements = document.getElementsByClassName('answer-box');
-    answerElements.forEach(element => {
+    for(let element of answerElements){
         element.style.backgroundColor = 'grey';
         element.style.border = 'none';
-    });
+    };
     document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
     document.getElementById("incorrect-score").style.color = 'grey';
     document.getElementById("correct-score").style.color = 'grey';
     document.getElementById('submit-answer').disabled = true;
+}
+
+function changeContentMessage(){
+    console.log("entra")
+    let elem = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
+    if(username === '...') {
+        elem.innerHTML = window.innerWidth < 600 
+                    ? elem.innerHTML = "Welcome to Quiz Game! Start by typing your username:"
+                    : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"      
+    } else {
+        elem.innerHTML = window.innerWidth < 600 
+                    ? `Hello <strong>${username}!</strong> The quiz is about to start..`
+                    : `Hello <strong>${username}!</strong> The quiz is about to start.
+                    15 questions will be shown. Guess as many as you can.`
+    }
+
+}
+
+function getUsernameResponsive(){
+    console.log("hh")
+    if(window.innerWidth < 900){
+        username = username.slice(0, 3);
+        console.log(username)
+        document.getElementById('username').innerHTML = username;
+    }
 }

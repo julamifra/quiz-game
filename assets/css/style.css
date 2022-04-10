@@ -29,7 +29,7 @@ header {
     width: 65%;
     padding: 2% 5%;    
     background-color: #E6ECF0;
-    
+    position: relative;
 }
 
 /* Questions Section */
@@ -51,6 +51,8 @@ header {
     height: 4.5rem;
     display: block;
     margin: 0 auto;
+    text-align: center;
+    font-size: 4.2rem;
 }
 #username {
     background-color: #2d4b5a;
@@ -74,9 +76,31 @@ header {
 }
 
 .question-box span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+/* .question-box > span::after{
+    content: "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"
+} */
+
+#icon-correct-answer {
+    text-align: right;
+    font-size: 5.2rem;
+    position: absolute;
+    letter-spacing: 1.2px;
+    right: 30px;
+    top: 130px;
+}
+
+#icon-correct-answer > .fa-check {
+    color: green;
+    display: none;
+}
+#icon-correct-answer > .fa-times {
+    color: red;
+    display: none;
 }
 
 .rhomb{
@@ -187,6 +211,8 @@ header {
 
 .answer-box:hover {
     border: 4px solid darkblue;
+    box-sizing: border-box;
+
 }
 
 .answer-box-active:hover,
@@ -273,3 +299,42 @@ header {
     padding: 5px;
     margin-top: 50px;
 }
+
+@media screen and (max-width: 1200px) { 
+
+}
+@media screen and (max-width: 800px) {
+    #input-username {
+        height: 36px;
+        font-size: 90%;
+    }
+    #submit-indexhtml {
+        height: 40px;
+        font-size: 90%;
+    }
+ }
+@media screen and (max-width: 650px) {
+    .game-area {
+        width: 100%;
+    }
+    #input-username-error {
+        float: left;
+    }
+    #submit-indexhtml {
+        width: 30%;
+        float: right;
+    }
+    .rhomb {
+        display: none;
+    }
+    #good-luck-message {
+        float: left;
+        width: 60%;
+        font-size: 1.5rem;
+    }
+    .answer-box {
+        height: 0;
+        padding: 50px 0;
+        line-height: 0;
+    }
+ }

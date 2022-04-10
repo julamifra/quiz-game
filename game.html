@@ -7,6 +7,8 @@
     <meta name="description" content="Quiz Game general knowledge">
     <meta name="keywords" content="quiz, game, questions, answers, score">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    
+
     <title>Quiz</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
     <div class="game-area">
         <section class="questions-section">
             <div class="username-logo">
-                <img class="exclamation-mark" src="assets/images/question-mark.jpg" alt="exclamation mark simbol">
+                <i class="fas fa-question exclamation-mark"></i>
                 <p id="username">JULAMIFRA</p>
             </div>
             <div >
@@ -29,6 +31,10 @@
                 <div id="round-counter"><p>1/15</p><div>
             </div>
         </section>
+        <div id="icon-correct-answer">
+            <i class='fas fa-check'></i>
+            <i class="fas fa-times"></i>
+        </div>
         <section class="answers-section">
             <div class="answer-box" id="answer1"><span>Loading...</span></div>
             <div class="answer-box" id="answer2"><span>Loading...</span></div>
@@ -44,7 +50,6 @@
     <div id="final-message">
         <p>Congratulations!</p>
         <p>Your score is: <span id="final-message-score">0</span>/15</p>
-        <button class="button-submit" onclick="redirectPage('')">Go back!</button>
         <button class="button-submit" onclick="redirectPage('game.html')">Try again!</button>
     </div>
     <script src="assets/js/data.js"></script>
