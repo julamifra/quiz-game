@@ -11,7 +11,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 - [User Stories](#user-stories)
 - [Features](#features)
 - [Future features](#future-features)
-- [Typography and color scheme](#typography-and-color-scheme)
+- [Typography and colour scheme](#typography-and-colour-scheme)
 - [Wireframes](#wireframes)
 - [Technologies](#technologies)
 - [Testing](#testing)
@@ -38,7 +38,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
   ![Username Section](./docs/first_page_quiz_game.JPG)
 
-  - In here, firstly, users will see a welcome message, encouriging them to play and setting their username.
+  - In here, firstly, users will see a welcome message, encouraging them to play and setting their username.
   - In order to start the quiz, users must enter their username, which will be displayed in the left top of the page while the user is playing.
   - This username parameter is required, in order to start the game. The submit button will remain disable, until the user types any alphanumeric character (maximum 10 characteres).
   - By clicking on the submit button, if any strange character has been set, an error message will be shown.
@@ -65,7 +65,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
   ![Score Section](./docs/score_section_quiz_game.JPG)
 
-  - Once the quiz is completed, a pop-up will appear in the middle of the page, in which the user will be able to see th final score.
+  - Once the quiz is completed, a pop-up will appear in the middle of the page, in which the user will be able to see the final score.
   - A 'Try again' button is displayed below this score message. By clicking on it, the game will be restarted, and new 15 questions will be asked to the user.
 
 ## Future features
@@ -73,15 +73,15 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 - One posible future feature might be to create a score, where users can see all their scores.
 - Another possible feature would be to divide the type of questions that are shown, by giving a topic select.
 
-## Typography and color scheme
+## Typography and colour scheme
 
 - **Typography**
 
   - The typography for this game project is not as important as other websites where are more focused on what the user is reading, as their contains a lot of paragraphs to read.
 
-- **Color Scheme**
+- **colour Scheme**
   - In this case, I've decided to use a very colourful style, like on the [Kahoot](https://www.kahoot.com/) website.
-  - Each of the answers has a different colourful color, as well as the question box.
+  - Each of the answers has a different colourful colour, as well as the question box.
 
 ## Wireframes
 
@@ -147,7 +147,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
   ![Screenshot 1 css validation](./docs/css_validator_quiz_game_1.JPG)
   ![Screenshot 2 css validation](./docs/css_validator_quiz_game_2.JPG)
 
-  The CSS validaton has been done with [CSS validator](https://www.cssportal.com/css-validator/). In this case, some warnings have been suggested from the validator. No errors have been found.
+  The CSS validaton has been done with [CSS validator](https://www.cssportal.com/css-validator/). In this case, some warnings have been suggested by the validator. No errors have been found.
 
 - **JS:**
   ![Screenshot 1 JS validation](./docs/js_validator_quiz_game.JPG)
