@@ -36,7 +36,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
 - **Username section**
 
-  ![Username Section](./docs/main_section_first_page_quiz_game.JPG)
+  ![Username Section](./docs/first_page_quiz_game.JPG)
 
   - In here, firstly, users will see a welcome message, encouriging them to play and setting their username.
   - In order to start the quiz, users must enter their username, which will be displayed in the left top of the page while the user is playing.
@@ -48,7 +48,7 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
 - **Game section**
 
-  ![Game Section](./docs/main_section_second_page_quiz_game.JPG)
+  ![Game Section](./docs/second_page_quiz_game.JPG)
 
   - This is the main page where 15 different questions (with 4 possible answeres) will be appearing, until the game is done.
   - Within the orange box, the questions will be shown. Below the question, four possibles answered will be displayed with a different colour each.
@@ -93,13 +93,11 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
 ## Technologies
 
-- HTML and CSS:
-  - **HTML** is the standard markup language for Web pages.
-  - **CSS** is the language we use to style and HTML document.
-  - Both programing languages are the main technologies used in this project in order to create the webpage.
-- JavaScript: ...
-- GitHub Pages: it is a static site hosting service. It take the code from a Github reposiroty and publishes a website. It will be explained in further detail in the [Deployment](#Deployment) section.
-- GitPod: this tool has been chosen as the IDE of this project. It is a cloud development environment accessible via a browser, that can be run directly from the github repository.
+- **HTML** is the standard markup language for Web pages.
+- **CSS** is the language we use to style and HTML document.
+- **JavaScript**: JavaScript is a scripting or programming language that allows you to implement complex features on web pages, creating dynamically updating content, control multimedia, animate images, and so on.
+- **GitHub Pages**: it is a static site hosting service. It take the code from a Github reposiroty and publishes a website. It will be explained in further detail in the [Deployment](#Deployment) section.
+- **GitPod**: this tool has been chosen as the IDE of this project. It is a cloud development environment accessible via a browser, that can be run directly from the github repository.
 
 ## Testing
 
@@ -111,30 +109,28 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 
     - The logo and the name of the game must be centered on the top of the website.
 
-    -> Bugs found: No bugs were found.
-
   - User Story number 2:
 
     - The username input must remain on the left side, while the submit button on the right, just beside the input.
     - This username parameter will be a required parameter.
-    - 10 characteres is the maxixum that an user can set on the username input.
-    - The non-alphanumeric validation will be done after click on the submit button.
+    - 10 is the maxixum number of characteres that an user can set on the username input.
+    - The non-alphanumeric validation will be done after clicking on the submit button.
     - This button is disabled, unless the user type any character.
-    - If the validation is correct, no error will be shown and the user will be redirected to the next view. On the contrary, an error message is displayed underneath the input.
-
-    -> Bugs found:
+    - If the validation is successful, no error will be shown and the user will be redirected to the next view. On the contrary, an error message will be displayed underneath the input.
 
   - User Story number 3:
+
     - The set username must be displayed on the left top, under the question mark icon.
-    - The first question must the displayed on the orange box, located on the top of this game section.
+    - The first question must be displayed on the orange box, at the top of this game section.
     - The round counter (1/15) must be on the right top of the screen.
-    - Just underneath the question, the four posible answers of this question will appear. Each of them, with a different background color.
-    - On the bottom of the website, the submit button will be in the middle, and the correct and incorrect score just on each sides of it.
-    - By clicking on one of the answers, it will set a red border color.
+    - Just below the question, the four posible answers of this question will appear. Each with a different background colour.
+    - At the bottom of the website, the submit button will be in the centre, and the correct and incorrect score will be on either side of it.
+    - By clicking on one of the answers, it will set a red border colour.
     - Then, the submit button will be enable. By clicking on it, the user will submit the chosen answer.
-    - If the answer is correct, the correct answer score will add 1 to it.
-    - If the answer is incorrect, the incorrect answer score will add 1 to it.
-    - Then, the user will see a next button in stead of the submit button. By clicking on it, the next question will be displayed and the round counter will add 1 to it.
+    - If the answer is correct, one is added to the correct answer score.
+    - If the answer is incorrect, one is added to the incorrect answer score.
+    - Then, the user will see a next button in stead of the submit button. By clicking on it, the next question will be displayed and the round counter will add up to 1.
+
   - User Story number 4:
     - Once the quiz is completed, after 15 questions, a blue pop-up will be displayed on the website.
     - Within it, a 'congratulations' message and a 'Try again' button will be displayed.
@@ -145,24 +141,55 @@ After 15 questions a pop-up will show up, where the final score will be displaye
 - **HTML:**
   ![Screenshot html validation](./docs/html_validator_quiz_game.JPG)
 
+  These Error have been fixed by adding the correct end tag in the div element, in line 33 from the game.html file.
+
 - **CSS:**
   ![Screenshot 1 css validation](./docs/css_validator_quiz_game_1.JPG)
   ![Screenshot 2 css validation](./docs/css_validator_quiz_game_2.JPG)
+
+  The CSS validaton has been done with [CSS validator](https://www.cssportal.com/css-validator/). In this case, some warnings have been suggested from the validator. No errors have been found.
 
 - **JS:**
   ![Screenshot 1 JS validation](./docs/js_validator_quiz_game.JPG)
   ![Screenshot 2 JS validation](./docs/js_validator_quiz_game_2.JPG)
 
-<!-- https://jshint.com/ -->
+  In order to validate the JavaScript code, the tool used is [JSHint](https://jshint.com/). In here, only some warnings have been found; most of them due to missing semicolon or unnecessary semicolon.
+
+  All this warnings have been fixed.
 
 ### Lighthouse - Dev Tools
 
+- Lighthouse DevTool performance for desktop in the index.html
+  ![Lighthouse - index.html - desktop](./docs/lighthouse_index_desktop.JPG)
+
+- Lighthouse DevTool performance for desktop in the game.html
+  ![Lighthouse - game.html - desktop](./docs/lighthouse_game_desktop.JPG)
+
+- Lighthouse DevTool performance for mobile in the index.html
+  ![Lighthouse - index.html - mobile](./docs/lighthouse_index_mobile.JPG)
+
+- Lighthouse DevTool performance for mobile in the game.html
+  ![Lighthouse - game.html - mobile](./docs/lighthouse_game_mobile.JPG)
+
 ### Supported screens and browsers
+
+- The website was tested on the most common screen sizes. The sizes where possible erros could appeared were: 850px, 650px. For this reason, two different styles have been set for these cases.
+
+- The browsers where the website has been tested are Firefox and Google Chrome. In the case of the former, the tests have only carried out for desktop size. For the latter, tests for mobile and desktop sizes have been done.
 
 ## Deployment
 
+The website was deployed to GitHub pages. These are the steps to deploy it:
+
+Navigating to the GitHub repository settings tab, you will find the "Pages" tab.
+In this tab, choosing the main branch of the site and saving the changes it is enough to deploy.
+Once it has deployed (it could take 5-10 minutes) the site would be available on the URL shown in this "pages" tab.
+The deployed URL for this project is the following: [Deployed URL](https://julamifra.github.io/quiz-game/index.html).
+
 ## Credits
+
+I like to thank my tutor, Rohit, for all the recommendations he has given me.
 
 ### Content and Media
 
-<!-- https://google.github.io/styleguide/jsguide.html#jsdoc-general-form -->
+- In order to see how to use JSDoc: [JSDoc documentation](https://google.github.io/styleguide/jsguide.html#jsdoc-general-form)
