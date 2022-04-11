@@ -8,7 +8,7 @@ window.addEventListener('resize', function(e){
     if( path === '' || path === 'index.html'){
         changeContentMessage();
     }
-    getUsernameResponsive()
+    getUsernameResponsive();
 });
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("error").style.visibility = 'hidden';
             }
             submitButtonUsername.disabled = inputUsername.value ? false : true; 
-        })
-        submitButtonUsername.addEventListener('click', clickSubmitInputName)
+        });
+        submitButtonUsername.addEventListener('click', clickSubmitInputName);
 
     } else if(path === 'game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", function(e){
             answerBox.addEventListener('click', function(e){
                 for(let element of answersBox){
                     if(element.id !== answerBox.id){
-                        element.classList.remove('answer-box-active')
+                        element.classList.remove('answer-box-active');
                     }
-                };
+                }
                 e.target.classList.add('answer-box-active');
                 document.getElementById('submit-answer').disabled = false;
-            })
-        };
+            });
+        }
         getQuestion();
     }
 });
@@ -78,12 +78,11 @@ function clickSubmitInputName(){
  */
 function setParamsStartGame(){
 
-    let newMessage =  window.innerWidth < 600 
-                    ? `Hello! The quiz is about to start..`
-                    : `Hello <strong>${username}!</strong> The quiz is about to start.
-                    15 questions will be shown. Guess as many as you can.`
+    let newMessage = (window.innerWidth < 600) 
+    								? `Hello! The quiz is about to start...`
+                    : `Hello <strong>${username}!</strong> The quiz is about to start. 15 questions will be shown. Guess as many as you can.`;
 
-    document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0].innerHTML = newMessage
+    document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0].innerHTML = newMessage;
     document.getElementById('submit-indexhtml').innerHTML = "Start";
     document.getElementById('input-username-error').style.display = 'none';
     document.getElementById('good-luck-message').style.display = 'block';
@@ -94,9 +93,8 @@ function setParamsStartGame(){
  * Redirect to the location given by parameter
  */
 function redirectPage(path) {
-    let newPath = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') 
-                    + `/${path}`
-    const url = `${window.location.origin}/${newPath}`
+    let newPath = window.location.pathname.split('/').slice(0, window.location.pathname.split('/').length-1).join('') + `/${path}`;
+    const url = `${window.location.origin}/${newPath}`;
     window.location.href = url;
 }
 
@@ -111,7 +109,7 @@ function getQuestion(){
     while(flagAskQuestion) {
         let randomNum = Math.floor(Math.random() * DATA_QUESTIONS.length) + 1;
         if(idsQuestionDisplayed.includes(randomNum)) {
-            getQuestion()
+            getQuestion();
         } else {
             flagAskQuestion = false;
             idsQuestionDisplayed.push(randomNum);
@@ -130,7 +128,7 @@ function displayQuestion(questionID){
     
     for(let element of answerElements){
         element.classList.remove('answer-box-active');
-    };
+    }
     document.getElementById('submit-answer').disabled = true;
 
     const questionObject = DATA_QUESTIONS[questionID];
@@ -223,10 +221,6 @@ function incrementRoundCounter(){
 
 
 
-
-
-
-
 //////////////////////////////////
 /////// show/hide functions///////
 //////////////////////////////////
@@ -239,7 +233,7 @@ function incrementRoundCounter(){
     document.getElementsByClassName('fa-check')[0].style.display = 'inline-block';
     setTimeout( function(){
         document.getElementsByClassName('fa-check')[0].style.display = 'none';
-    }, 1000)
+    }, 1000);
 }
 
 /**
@@ -250,7 +244,7 @@ function showInCorrectIcon(){
     document.getElementsByClassName('fa-times')[0].style.display = 'inline-block';
     setTimeout( function(){
         document.getElementsByClassName('fa-times')[0].style.display = 'none';
-    }, 1000)
+    }, 1000);
 }
 
 
@@ -314,7 +308,7 @@ function colorGreyIncorrectAnswers(answerCorrectId) {
         if(answerCorrectId != element.id){
             element.classList.add('answer-box-incorrect');
         }
-    };
+    }
 }
 
 /**
@@ -325,7 +319,7 @@ function styleGrey(){
     for(let element of answerElements){
         element.style.backgroundColor = 'grey';
         element.style.border = 'none';
-    };
+    }
     document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
     document.getElementById("incorrect-score").style.color = 'grey';
     document.getElementById("correct-score").style.color = 'grey';
@@ -339,7 +333,7 @@ function blockAnswers() {
     const answerElements = document.getElementsByClassName('answer-box');
     for(let element of answerElements){
         element.classList.add('answer-box-deactive');
-    };
+    }
 }
 
 /**
@@ -350,12 +344,12 @@ function changeContentMessage(){
     if(username === '...') {
         elem.innerHTML = window.innerWidth < 600 
                     ? elem.innerHTML = "Welcome to Quiz Game! Start by typing your username:"
-                    : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"      
+                    : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:";
     } else {
         elem.innerHTML = window.innerWidth < 600 
                     ? `Hello! The quiz is about to start..`
                     : `Hello <strong>${username}!</strong> The quiz is about to start.
-                    15 questions will be shown. Guess as many as you can.`
+                    15 questions will be shown. Guess as many as you can.`;
     }
 }
 
