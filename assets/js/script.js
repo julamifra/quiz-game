@@ -144,21 +144,21 @@ function displayQuestion(questionID){
 }
 
 /**
- * Function called by the submit answer button, verify the correct answer and call the function
- *  to increment correct/incorrect score.
- * Call getQuestion function.
- * Call the function to show the final message score, if 15 questions have been shown
+ * Function called by the submit answer button, verify the correct answer and call the 
+ * function to increment correct/incorrect score.
+ * Call clickNextQuestion function.
+ * Call the function to show the final message score, if 15 questions have been shown.
  */
-function submitAnswer(){
+function clickSubmitAnswer(){
     const answerSelected = document.getElementsByClassName('answer-box-active')[0].innerHTML;
     const indexPlaying = idsQuestionDisplayed[idsQuestionDisplayed.length-1];
     const questionObj = DATA_QUESTIONS[indexPlaying];
     const isCorrect = questionObj[questionObj.answer] === answerSelected;
     let answerCorrectId;
-    console.log("questionObj: ", questionObj);
     if(isCorrect){
         incrementCorrectScore();
         showCorrectIcon();
+        blockAnswers();
     } else {
         answerCorrectId = colorCorrectAnswer(questionObj);
         colorGreyIncorrectAnswers(answerCorrectId);
@@ -175,9 +175,9 @@ function submitAnswer(){
 }
 
 /**
- * 
+ * Show the next question to be answered
  */
-function nextQuestion(){
+function clickNextQuestion(){
     const correctAnswer = document.getElementsByClassName('answer-box-correct');
     if(correctAnswer.length !== 0){
         correctAnswer[0].classList.remove('answer-box-correct');
@@ -185,12 +185,14 @@ function nextQuestion(){
     const elementsAnswer = document.getElementsByClassName('answer-box');
     for(let element of elementsAnswer){
         element.classList.remove('answer-box-incorrect');
+        element.classList.remove('answer-box-deactive');
     }
 
     hideNextButton();
 
     getQuestion();
 }
+
 
 /**
  * Gets the current tally of correct answers from the DOM and increments it by 1
@@ -219,10 +221,20 @@ function incrementRoundCounter(){
     document.getElementById('round-counter').innerText = newRound;
 }
 
+
+
+
+
+
+
+//////////////////////////////////
+/////// show/hide functions///////
+//////////////////////////////////
+
 /**
  * Display a check icon when the answer is correct
  */
-function showCorrectIcon(){
+ function showCorrectIcon(){
     document.getElementsByClassName('fa-times')[0].style.display = 'none';
     document.getElementsByClassName('fa-check')[0].style.display = 'inline-block';
     setTimeout( function(){
@@ -243,7 +255,7 @@ function showInCorrectIcon(){
 
 
 /**
- * Dispaly a pop-up with the final score and two buttons.
+ * Display a pop-up with the final score and two buttons.
  * All the elements are set to green
  */
 function showFinalMessage(){
@@ -253,37 +265,17 @@ function showFinalMessage(){
     styleGrey();
 }
 
-
-function changeContentMessage(){
-    let elem = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
-    if(username === '...') {
-        elem.innerHTML = window.innerWidth < 600 
-                    ? elem.innerHTML = "Welcome to Quiz Game! Start by typing your username:"
-                    : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"      
-    } else {
-        elem.innerHTML = window.innerWidth < 600 
-                    ? `Hello! The quiz is about to start..`
-                    : `Hello <strong>${username}!</strong> The quiz is about to start.
-                    15 questions will be shown. Guess as many as you can.`
-    }
-
-}
-
-function getUsernameResponsive(){
-    if(window.innerWidth < 900){
-        const cutName = username.slice(0, 3);
-        document.getElementById('username').innerHTML = cutName;
-    } else {
-        document.getElementById('username').innerHTML = username;
-    }
-}
-
-
+/**
+ * Show 'next' button and hidde 'submit' answer
+ */
 function showNextButton() {
     document.getElementById('next-question').style.display = 'inline-block';
     document.getElementById('submit-answer').style.display = 'none';
 }
 
+/**
+ * Show 'submit' button and hidde 'next' answer
+ */
 function hideNextButton() {
     document.getElementById('next-question').style.display = 'none';
     document.getElementById('submit-answer').style.display = 'inline-block';
@@ -295,6 +287,11 @@ function hideNextButton() {
 //// Changing style functions ////
 //////////////////////////////////
 
+/**
+ * Add color styles to the correct answer
+ * @param {*} questionObj - the object of the correct question and 4 answers
+ * @returns the element id of the correct answer
+ */
 function colorCorrectAnswer(questionObj){
     const answers = document.getElementsByClassName('answer-box');
     let correctAnswerElemId;
@@ -307,6 +304,10 @@ function colorCorrectAnswer(questionObj){
     return correctAnswerElemId;
 }
 
+/**
+ * Style in grey all the inocrrect answers
+ * @param {*} answerCorrectId The element id of the correct answer
+ */
 function colorGreyIncorrectAnswers(answerCorrectId) {
     const answerElements = document.getElementsByClassName('answer-box');
     for(let element of answerElements){
@@ -316,6 +317,9 @@ function colorGreyIncorrectAnswers(answerCorrectId) {
     };
 }
 
+/**
+ * Add grey style to all the page when the game is done. 
+ */
 function styleGrey(){
     const answerElements = document.getElementsByClassName('answer-box');
     for(let element of answerElements){
@@ -326,4 +330,43 @@ function styleGrey(){
     document.getElementById("incorrect-score").style.color = 'grey';
     document.getElementById("correct-score").style.color = 'grey';
     document.getElementById('submit-answer').disabled = true;
+}
+
+/**
+ * Deactive the others possible answers when the correct answer is selected and submited.
+ */
+function blockAnswers() {
+    const answerElements = document.getElementsByClassName('answer-box');
+    for(let element of answerElements){
+        element.classList.add('answer-box-deactive');
+    };
+}
+
+/**
+ * Modify the inital content message in responsive design
+ */
+function changeContentMessage(){
+    let elem = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
+    if(username === '...') {
+        elem.innerHTML = window.innerWidth < 600 
+                    ? elem.innerHTML = "Welcome to Quiz Game! Start by typing your username:"
+                    : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"      
+    } else {
+        elem.innerHTML = window.innerWidth < 600 
+                    ? `Hello! The quiz is about to start..`
+                    : `Hello <strong>${username}!</strong> The quiz is about to start.
+                    15 questions will be shown. Guess as many as you can.`
+    }
+}
+
+/**
+ * Modify username in responsive design
+ */
+function getUsernameResponsive(){
+    if(window.innerWidth < 900){
+        const cutName = username.slice(0, 3);
+        document.getElementById('username').innerHTML = cutName;
+    } else {
+        document.getElementById('username').innerHTML = username;
+    }
 }
