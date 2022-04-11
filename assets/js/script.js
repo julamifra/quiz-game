@@ -73,7 +73,7 @@ function clickSubmit(){
 function setParamsStartGame(){
 
     let newMessage =  window.innerWidth < 600 
-                    ? `Hello <strong>${username}!</strong> The quiz is about to start..`
+                    ? `Hello! The quiz is about to start..`
                     : `Hello <strong>${username}!</strong> The quiz is about to start.
                     15 questions will be shown. Guess as many as you can.`
 
@@ -234,7 +234,6 @@ function showFinalMessage(){
 }
 
 function changeContentMessage(){
-    console.log("entra")
     let elem = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
     if(username === '...') {
         elem.innerHTML = window.innerWidth < 600 
@@ -242,7 +241,7 @@ function changeContentMessage(){
                     : "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"      
     } else {
         elem.innerHTML = window.innerWidth < 600 
-                    ? `Hello <strong>${username}!</strong> The quiz is about to start..`
+                    ? `Hello! The quiz is about to start..`
                     : `Hello <strong>${username}!</strong> The quiz is about to start.
                     15 questions will be shown. Guess as many as you can.`
     }
@@ -250,10 +249,8 @@ function changeContentMessage(){
 }
 
 function getUsernameResponsive(){
-    console.log("hh")
     if(window.innerWidth < 900){
         username = username.slice(0, 3);
-        console.log(username)
         document.getElementById('username').innerHTML = username;
     }
 }
