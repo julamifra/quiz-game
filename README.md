@@ -1,6 +1,12 @@
 # QUIZ-GAME
 
+Quiz-game is developed to test user's general knowledge, by asking 15 random questions. Desiginig a very user-friendly and colourful interface, users will be able to set their user name and later on  proceed directly to answer the questions.
 
+After 15 questions a pop-up will show up, where the final score will be displayed. Users will be able to start a new game by clicking on the button below this score.
+
+
+
+![Responsice Mockup](./docs/wireframe_quiz_game.JPG)
 
 ![]()
 
@@ -18,7 +24,8 @@
 
 
 ## User Stories
-1) As an user I want to see the 
+1) As an user I want to see the welcome message, the logo and the username input as the first page of the website.
+2) 
 
 ## Features
 
@@ -73,7 +80,10 @@
 
 - __HTML:__ 
 
-- __CSS:__ 
+- __CSS:__
+
+- __JS:__ 
+<!-- https://jshint.com/ -->
 
 ### Lighthouse - Dev Tools
 
@@ -90,4 +100,6 @@
 
 
 ### Content and Media
+
+<!-- https://google.github.io/styleguide/jsguide.html#jsdoc-general-form -->
 

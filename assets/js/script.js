@@ -3,7 +3,7 @@ let username = window.localStorage.getItem("username") || '...';
 let idsQuestionDisplayed = [];
 // variable 'DATA_QUESTIONS' is declared in the other script
 
-window.addEventListener('resize', function(event){
+window.addEventListener('resize', function(e){
     const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     if( path === '' || path === 'index.html'){
         changeContentMessage();
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
             submitButtonUsername.disabled = inputUsername.value ? false : true; 
         })
-        submitButtonUsername.addEventListener('click', clickSubmit)
+        submitButtonUsername.addEventListener('click', clickSubmitInputName)
 
     } else if(path === 'game.html'){
         const answersBox = document.getElementsByClassName('answer-box');
@@ -49,10 +49,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 /**
  * Verify the input value and shows an error message if necessary
  */
-function clickSubmit(){
+function clickSubmitInputName(){
     let inputUsername = document.getElementById('input-username');
-
-    if(username !== '...') {
+    
+    if(!inputUsername.value) {
         redirectPage('game.html');
     } else {
         let usernameInput = inputUsername.value;
@@ -62,7 +62,8 @@ function clickSubmit(){
             errorMessage.style.visibility = 'visible';
         } else {
             errorMessage.style.visibility = 'hidden';
-            username = document.getElementById('username').innerHTML = usernameInput;
+            username = usernameInput;
+            document.getElementById('username').innerHTML = usernameInput;
             window.localStorage.setItem("username", usernameInput);
             document.getElementById('input-username').value = '';
             getUsernameResponsive();
@@ -153,10 +154,14 @@ function submitAnswer(){
     const indexPlaying = idsQuestionDisplayed[idsQuestionDisplayed.length-1];
     const questionObj = DATA_QUESTIONS[indexPlaying];
     const isCorrect = questionObj[questionObj.answer] === answerSelected;
+    let answerCorrectId;
+    console.log("questionObj: ", questionObj);
     if(isCorrect){
         incrementCorrectScore();
         showCorrectIcon();
     } else {
+        answerCorrectId = colorCorrectAnswer(questionObj);
+        colorGreyIncorrectAnswers(answerCorrectId);
         incrementIncorrectScore();
         showInCorrectIcon();
     }
@@ -164,9 +169,27 @@ function submitAnswer(){
     if(idsQuestionDisplayed.length >= 15){
         showFinalMessage();
     } else {
-        getQuestion();
+        showNextButton();
         incrementRoundCounter();
     }
+}
+
+/**
+ * 
+ */
+function nextQuestion(){
+    const correctAnswer = document.getElementsByClassName('answer-box-correct');
+    if(correctAnswer.length !== 0){
+        correctAnswer[0].classList.remove('answer-box-correct');
+    }
+    const elementsAnswer = document.getElementsByClassName('answer-box');
+    for(let element of elementsAnswer){
+        element.classList.remove('answer-box-incorrect');
+    }
+
+    hideNextButton();
+
+    getQuestion();
 }
 
 /**
@@ -227,16 +250,9 @@ function showFinalMessage(){
     document.getElementById('final-message').style.visibility = 'visible';
 
     document.getElementById("final-message-score").innerText = document.getElementById("correct-score").innerText;
-    const answerElements = document.getElementsByClassName('answer-box');
-    for(let element of answerElements){
-        element.style.backgroundColor = 'grey';
-        element.style.border = 'none';
-    };
-    document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
-    document.getElementById("incorrect-score").style.color = 'grey';
-    document.getElementById("correct-score").style.color = 'grey';
-    document.getElementById('submit-answer').disabled = true;
+    styleGrey();
 }
+
 
 function changeContentMessage(){
     let elem = document.getElementsByClassName('question-box')[0].getElementsByTagName('span')[0];
@@ -255,9 +271,59 @@ function changeContentMessage(){
 
 function getUsernameResponsive(){
     if(window.innerWidth < 900){
-        username = username.slice(0, 3);
-        document.getElementById('username').innerHTML = username;
+        const cutName = username.slice(0, 3);
+        document.getElementById('username').innerHTML = cutName;
     } else {
         document.getElementById('username').innerHTML = username;
     }
+}
+
+
+function showNextButton() {
+    document.getElementById('next-question').style.display = 'inline-block';
+    document.getElementById('submit-answer').style.display = 'none';
+}
+
+function hideNextButton() {
+    document.getElementById('next-question').style.display = 'none';
+    document.getElementById('submit-answer').style.display = 'inline-block';
+}
+
+
+
+//////////////////////////////////
+//// Changing style functions ////
+//////////////////////////////////
+
+function colorCorrectAnswer(questionObj){
+    const answers = document.getElementsByClassName('answer-box');
+    let correctAnswerElemId;
+    for(let elem of answers) {
+        if(elem.innerHTML === questionObj[questionObj.answer]){
+            correctAnswerElemId = elem.id;
+            elem.classList.add('answer-box-correct');
+        }
+    }
+    return correctAnswerElemId;
+}
+
+function colorGreyIncorrectAnswers(answerCorrectId) {
+    const answerElements = document.getElementsByClassName('answer-box');
+    for(let element of answerElements){
+        if(answerCorrectId != element.id){
+            element.classList.add('answer-box-incorrect');
+        }
+    };
+}
+
+function styleGrey(){
+    const answerElements = document.getElementsByClassName('answer-box');
+    for(let element of answerElements){
+        element.style.backgroundColor = 'grey';
+        element.style.border = 'none';
+    };
+    document.getElementsByClassName('question-box')[0].style.backgroundColor = 'grey';
+    document.getElementById("incorrect-score").style.color = 'grey';
+    document.getElementById("correct-score").style.color = 'grey';
+    document.getElementById('submit-answer').disabled = true;
 }

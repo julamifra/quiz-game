@@ -167,6 +167,10 @@ header {
 #submit-answer{
     font-size: 200%;
 }
+#next-question {
+    display: none;
+    font-size: 200%;
+}
 
 .button-submit:active,
 .button-submit:hover {
@@ -213,12 +217,22 @@ header {
 .answer-box:hover {
     border: 4px solid darkblue;
     box-sizing: border-box;
-
 }
 
 .answer-box-active:hover,
 .answer-box-active {
     border: 4px solid red;
+}
+
+.answer-box-correct:hover,
+.answer-box-correct {
+    background-color: rgb(123, 181, 123) !important;
+    border: 4px solid rgb(123, 181, 123) !important;
+}
+.answer-box-incorrect:hover,
+.answer-box-incorrect {
+    background-color: grey !important;
+    border: none !important;
 }
 
 
@@ -347,6 +361,9 @@ header {
         width: 90%;
     }
     #submit-answer{
+        font-size: 150%;
+    }
+    #next-question{
         font-size: 150%;
     }
     #round-counter{
