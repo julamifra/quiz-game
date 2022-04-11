@@ -4,7 +4,10 @@ let idsQuestionDisplayed = [];
 // variable 'DATA_QUESTIONS' is declared in the other script
 
 window.addEventListener('resize', function(event){
-    changeContentMessage();
+    const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
+    if( path === '' || path === 'index.html'){
+        changeContentMessage();
+    }
     getUsernameResponsive()
 });
 
