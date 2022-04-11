@@ -1,5 +1,5 @@
+let username = window.localStorage.getItem("username") || '...';
 
-let username = document.getElementById('username').innerHTML || '...';
 let idsQuestionDisplayed = [];
 // variable 'DATA_QUESTIONS' is declared in the other script
 
@@ -12,6 +12,7 @@ window.addEventListener('resize', function(event){
 });
 
 document.addEventListener("DOMContentLoaded", function(e){
+
     getUsernameResponsive();
     const path = window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
     if( path === '' || path === 'index.html'){
@@ -62,6 +63,7 @@ function clickSubmit(){
         } else {
             errorMessage.style.visibility = 'hidden';
             username = document.getElementById('username').innerHTML = usernameInput;
+            window.localStorage.setItem("username", usernameInput);
             document.getElementById('input-username').value = '';
             getUsernameResponsive();
             setParamsStartGame();
@@ -254,6 +256,8 @@ function changeContentMessage(){
 function getUsernameResponsive(){
     if(window.innerWidth < 900){
         username = username.slice(0, 3);
+        document.getElementById('username').innerHTML = username;
+    } else {
         document.getElementById('username').innerHTML = username;
     }
 }
