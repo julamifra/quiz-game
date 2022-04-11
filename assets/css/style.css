@@ -1,377 +1,375 @@
-* { 
-    margin: 0;
-    padding: 0;
-    border: none;
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 body {
-    font-family: Source Sans Pro, sans-serif;
-    font-weight: 300;
-    letter-spacing: 1px;
-    line-height: 1.5;
-    color: #3a3a3a;
-
+  font-family: Source Sans Pro, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  color: #3a3a3a;
 }
 
 header {
-    text-align: center;
-    font-size: 2rem;
-    padding: 2%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2%;
 }
 
 .initial-logo {
-    height: 4rem;
-    padding-right: 5px;
+  height: 4rem;
+  padding-right: 5px;
 }
 
 .game-area {
-    margin: 0 auto;
-    width: 65%;
-    padding: 2% 5%;    
-    background-color: #E6ECF0;
-    position: relative;
+  margin: 0 auto;
+  width: 65%;
+  padding: 2% 5%;
+  background-color: #e6ecf0;
+  position: relative;
 }
 
 /* Questions Section */
 
 .questions-section {
-    width: 100%;
-    height: 150px;
-    margin: 30px auto;
-    padding: 10px 0;
+  width: 100%;
+  height: 150px;
+  margin: 30px auto;
+  padding: 10px 0;
 }
-.username-logo{
-    float: left;
-    width: calc(20% - 5px);
-    height: 125px;
-    box-sizing: border-box;
-    margin-right: 5px;
-    text-align: center;
+.username-logo {
+  float: left;
+  width: calc(20% - 5px);
+  height: 125px;
+  box-sizing: border-box;
+  margin-right: 5px;
+  text-align: center;
 }
 .exclamation-mark {
-    height: 4.5rem;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 4.2rem;
+  height: 4.5rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 4.2rem;
 }
 #username {
-    background-color: #2d4b5a;
-    text-align: center;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 25px;
-    color: white;
+  background-color: #2d4b5a;
+  text-align: center;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 25px;
+  color: white;
 }
 
 .question-box {
-    background-color: #ffb253;
-    float: right;
-    width: 75%;
-    box-sizing: border-box;
-    height: 125px;
-    line-height: 125px;
-    border-radius: 25px;
-    text-align: center;
-    padding: 3px;
+  background-color: #ffb253;
+  float: right;
+  width: 75%;
+  box-sizing: border-box;
+  height: 125px;
+  line-height: 125px;
+  border-radius: 25px;
+  text-align: center;
+  padding: 3px;
 }
 
 .question-box span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 25px;
 }
 
 /* .question-box > span::after{
-    content: "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"
-} */
+      content: "Welcome to Quiz Game! How about some general knowledge questions? Start by typing your username:"
+  } */
 
 #icon-correct-answer {
-    text-align: right;
-    font-size: 5.2rem;
-    position: absolute;
-    letter-spacing: 1.2px;
-    right: 30px;
-    top: 130px;
+  text-align: right;
+  font-size: 5.2rem;
+  position: absolute;
+  letter-spacing: 1.2px;
+  right: 30px;
+  top: 130px;
 }
 
 #icon-correct-answer > .fa-check {
-    color: green;
-    display: none;
+  color: green;
+  display: none;
 }
 #icon-correct-answer > .fa-times {
-    color: red;
-    display: none;
+  color: red;
+  display: none;
 }
 
-.rhomb{
-    background-color: #ffb253;
-    width: 20px;
-    height: 20px;
-    position: relative;
-    bottom: 13px;
-    left: 80px;
-    transform: rotate(45deg);
-} 
-
-
+.rhomb {
+  background-color: #ffb253;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  bottom: 13px;
+  left: 80px;
+  transform: rotate(45deg);
+}
 
 /* Username Section - index.html */
 
 .username-section {
-    height: 50px;
-    margin: 30px auto;
-    padding: 10px 0;
+  height: 50px;
+  margin: 30px auto;
+  padding: 10px 0;
 }
 
 #input-username-error {
-    float: right;
-    width: 40%;
-    margin-right: 15%;
+  float: right;
+  width: 40%;
+  margin-right: 15%;
 }
 #input-username {
-    width: 100%;
-    height: 50px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    font-size: 1.6rem;
-    padding-left: 10px;
+  width: 100%;
+  height: 50px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding-left: 10px;
 }
 #error {
-    color: red;
-    margin: 3px;
-    visibility: hidden;
+  color: red;
+  margin: 3px;
+  visibility: hidden;
 }
 
 #good-luck-message {
-    display: none;
-    float: right;
-    width: 40%;
-    margin-right: 8%;
-    font-size: 2rem;
+  display: none;
+  float: right;
+  width: 40%;
+  margin-right: 8%;
+  font-size: 2rem;
 }
 
 /* Button styles */
 
 .button-submit {
-    border: 2px solid #3d8af7;
-    color: #3d8af7;
-    border-radius: 10px;
+  border: 2px solid #3d8af7;
+  color: #3d8af7;
+  border-radius: 10px;
 }
-#submit-indexhtml{
-    width: 20%;
-    height: 54px;
-    float: right;
-    font-size: 150%;
+#submit-indexhtml {
+  width: 20%;
+  height: 54px;
+  float: right;
+  font-size: 150%;
 }
-#submit-answer{
-    font-size: 200%;
+#submit-answer {
+  font-size: 200%;
 }
 #next-question {
-    display: none;
-    font-size: 200%;
+  display: none;
+  font-size: 200%;
 }
 
 .button-submit:active,
 .button-submit:hover {
-    background-color: #3d8af7;
-    color: white;
-    cursor: pointer;
+  background-color: #3d8af7;
+  color: white;
+  cursor: pointer;
 }
 .button-submit:disabled {
-    border: 2px solid #87888a;
-    background-color: #c0c0c0;
-    color: white;
-    cursor: not-allowed;
+  border: 2px solid #87888a;
+  background-color: #c0c0c0;
+  color: white;
+  cursor: not-allowed;
 }
 
 /* Answer Section - game.html */
 
 #round-counter {
-    display: inline-block;
-    border: 2px solid #000;
-    border-radius: 50px;
-    padding: 15px 10px;
-    position: relative;
-    line-height: 0;
-    bottom: 237px;
-    left: 44%;
+  display: inline-block;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 15px 10px;
+  position: relative;
+  line-height: 0;
+  bottom: 237px;
+  left: 44%;
 }
 
 .answers-section {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 .answer-box {
-    display: inline-block;
-    width: 45%;
-    height: 150px;
-    line-height: 150px;
-    border: 2px solid #000;
-    box-sizing: border-box;
-    margin-top: 2px;
-    position: relative;
-    cursor: pointer;
+  display: inline-block;
+  width: 45%;
+  height: 150px;
+  line-height: 150px;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  margin-top: 2px;
+  position: relative;
+  cursor: pointer;
 }
 
 .answer-box:hover {
-    border: 4px solid darkblue;
-    box-sizing: border-box;
+  border: 4px solid darkblue;
+  box-sizing: border-box;
 }
 
 .answer-box-active:hover,
 .answer-box-active {
-    border: 4px solid red;
+  border: 4px solid red;
+}
+.answer-box-deactive:hover,
+.answer-box-deactive {
+  border: none !important;
+  cursor: default !important;
 }
 
 .answer-box-correct:hover,
 .answer-box-correct {
-    background-color: rgb(123, 181, 123) !important;
-    border: 4px solid rgb(123, 181, 123) !important;
+  background-color: rgb(123, 181, 123) !important;
+  border: 4px solid rgb(123, 181, 123) !important;
 }
 .answer-box-incorrect:hover,
 .answer-box-incorrect {
-    background-color: grey !important;
-    border: none !important;
+  background-color: grey !important;
+  border: none !important;
+  cursor: default !important;
 }
-
-
-
 
 #answer1 {
-    background-color: #cbe8ba;
+  background-color: #cbe8ba;
 }
 #answer2 {
-    background-color: #fefac0;
+  background-color: #fefac0;
 }
 #answer3 {
-    background-color: #a8c6fa;
+  background-color: #a8c6fa;
 }
 #answer4 {
-    background-color: #f6a2bf;
+  background-color: #f6a2bf;
 }
-
 
 /* Score Section - game.html */
 
 .score-section {
-    width: 80%;
-    margin: 5px auto;
-    padding: 30px 0;
+  width: 80%;
+  margin: 5px auto;
+  padding: 30px 0;
 }
 
 .score-section > p:first-child {
-    width: 33%;
-    float: left;
-    padding-top: 10px;
+  width: 33%;
+  float: left;
+  padding-top: 10px;
 }
 .score-section > p:last-child {
-    width: 33%;
-    float: right;
-    padding-top: 10px;
-    text-align: right;
+  width: 33%;
+  float: right;
+  padding-top: 10px;
+  text-align: right;
 }
 
 .score-section > button {
-    width: 33%;
-    margin: 0 auto;
-    padding: 3px;
+  width: 33%;
+  margin: 0 auto;
+  padding: 3px;
 }
 
 #correct-score {
-    color: green;
-    font-weight: bold;
+  color: green;
+  font-weight: bold;
 }
 
 #incorrect-score {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
 }
 
 /* Final message- game.html */
 
 #final-message {
-    visibility: hidden;
-    height: 50%;
-    width: 50%;
-    text-align: center;
-    border: 4px solid rgb(62, 62, 122);
-    border-radius: 25px;
-    background-color: rgba(123, 143, 206, 0.9);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 3rem;
+  visibility: hidden;
+  height: 50%;
+  width: 50%;
+  text-align: center;
+  border: 4px solid rgb(62, 62, 122);
+  border-radius: 25px;
+  background-color: rgba(123, 143, 206, 0.9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
 }
 
 #final-message > p {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 #final-message > button {
-    font-size: 2rem;
-    padding: 5px;
-    margin-top: 50px;
+  font-size: 2rem;
+  padding: 5px;
+  margin-top: 50px;
 }
 
-@media screen and (max-width: 1200px) { 
-
+@media screen and (max-width: 1200px) {
 }
 @media screen and (max-width: 850px) {
-    #input-username {
-        height: 36px;
-        font-size: 90%;
-    }
-    #submit-indexhtml {
-        height: 40px;
-        font-size: 90%;
-    }
-    #final-message {
-        font-size: 2rem;
-    }
- }
+  #input-username {
+    height: 36px;
+    font-size: 90%;
+  }
+  #submit-indexhtml {
+    height: 40px;
+    font-size: 90%;
+  }
+  #final-message {
+    font-size: 2rem;
+  }
+}
 @media screen and (max-width: 650px) {
-    .game-area {
-        width: 88%;
-    }
-    #input-username-error {
-        float: left;
-    }
-    #submit-indexhtml {
-        width: 30%;
-        float: right;
-    }
-    .rhomb {
-        display: none;
-    }
-    #good-luck-message {
-        float: left;
-        width: 60%;
-        font-size: 1.5rem;
-    }
-    .answer-box {
-        width: 100%;
-        display: block;
-        height: 0;
-        padding: 50px 0;
-        line-height: 0;
-    }
-    .score-section {
-        width: 90%;
-    }
-    #submit-answer{
-        font-size: 150%;
-    }
-    #next-question{
-        font-size: 150%;
-    }
-    #round-counter{
-        bottom: 218px;
-    }
-    #final-message {
-        font-size: 2rem;
-        height: 55%;
-        width: 85%;
-    }
- }
+  .game-area {
+    width: 88%;
+  }
+  #input-username-error {
+    float: left;
+  }
+  #submit-indexhtml {
+    width: 30%;
+    float: right;
+  }
+  .rhomb {
+    display: none;
+  }
+  #good-luck-message {
+    float: left;
+    width: 60%;
+    font-size: 1.5rem;
+  }
+  .answer-box {
+    width: 100%;
+    display: block;
+    height: 0;
+    padding: 50px 0;
+    line-height: 0;
+  }
+  .score-section {
+    width: 90%;
+  }
+  #submit-answer {
+    font-size: 150%;
+  }
+  #next-question {
+    font-size: 150%;
+  }
+  #round-counter {
+    bottom: 218px;
+  }
+  #final-message {
+    font-size: 2rem;
+    height: 55%;
+    width: 85%;
+  }
+}
